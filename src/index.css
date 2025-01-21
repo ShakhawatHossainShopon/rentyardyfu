@@ -1,0 +1,454 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif, "arial", "Times New Roman";
+  scroll-behavior: smooth;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+.Home-background-div {
+  position: relative;
+  width: 100%; /* or any desired width */
+  height: 425px; /* or any desired height */
+  background-image: url("https://frame.rentyard.net/assets/HomeBanner.png"); /* path to your image */
+  background-size: cover; /* ensures the image covers the whole div */
+  background-position: center; /* centers the image */
+  background-repeat: no-repeat; /* prevents the image from repeating */
+}
+
+/* Add the dark overlay */
+.Home-background-div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* dark overlay with 50% opacity */
+  z-index: 1; /* ensures the overlay is above the background image but below any content */
+}
+
+/* Ensure content inside the div appears above the overlay */
+.Home-background-div > * {
+  position: relative;
+  z-index: 2;
+}
+.react-time-picker__wrapper {
+  border: none;
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+.ql-editor ol,
+.ql-editor ul {
+  padding-left: 0px;
+}
+
+.ql-editor p {
+  padding-left: 0.8rem;
+}
+
+.ql-editor h2 {
+  padding-left: 1rem;
+}
+
+.ql-editor {
+  padding-top: 1rem;
+  padding-bottom: 4rem;
+}
+
+/* multiple dorpdown css */
+.react-date-picker__inputGroup input {
+  background: transparent !important;
+  padding-top: 0rem;
+  padding-right: 0rem !important;
+  padding-bottom: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+.react-date-picker__wrapper {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+  border: none;
+  padding: none !important;
+  border-radius: 0px;
+}
+/* .multiSelectContainer input {
+  background: transparent;
+  border: none;
+  margin-top: none;
+}
+
+.multiSelectContainer li:hover {
+  background: transparent;
+  color: #000;
+  cursor: pointer;
+}
+.multiSelectContainer .search_name_input {
+  color: blue;
+}
+.multiSelectContainer .search-wrapper input {
+  padding-top: 0rem;
+  padding-right: 0rem !important;
+  padding-bottom: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+.multiSelectContainer {
+  background: #fff !important;
+}
+.multiSelectContainer input {
+  font-size: 14px !important;
+}
+.multiSelectContainer input:focus {
+  outline: none !important;
+  --tw-ring-shadow: none !important;
+} */
+.searchWrapper {
+  /* border: 1px solid rgb(63 131 248) !important; */
+  border: none !important;
+  border-radius: 0px !important;
+  padding: 4px 8px !important;
+}
+
+/* multiple dorpdown css */
+
+@media only screen and (max-width: 600px) {
+  .leading-relaxed {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .leading-normal {
+    padding: 0.5rem;
+  }
+}
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+.react-date-picker {
+  position: static !important;
+}
+
+.react-date-picker__calendar {
+  position: absolute;
+  inset: 100% 0% 0% 0% !important;
+  width: 100%;
+  max-width: 100%;
+}
+
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+.react-datepicker__view-calendar-icon input {
+  padding: 0px 0px 0px 25px !important;
+}
+
+.react-datepicker-popper {
+  z-index: 9999999999;
+}
+
+.carousel-container {
+  width: 100%;
+}
+.carousel-item {
+  padding: 10px;
+  box-sizing: border-box;
+}
+.carousel-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+.carousel-image:hover {
+  transform: scale(1.05);
+}
+/* Custom arrow styling */
+.slick-prev,
+.slick-next {
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+}
+.slick-prev {
+  left: 20px;
+}
+.slick-next {
+  right: 10px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-family: "slick";
+  font-size: 35px;
+  line-height: 1;
+  opacity: 1;
+  color: white;
+  background-color: black;
+  border-radius: 100%;
+  padding: 0px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.react-datepicker__month-select {
+  -webkit-appearance: auto;
+  appearance: auto;
+}
+.react-datepicker__year-select {
+  -webkit-appearance: auto;
+  appearance: auto;
+}
+.react-datepicker__month-container {
+  @apply dark:bg-darkMode dark:text-gray-300;
+}
+.react-datepicker__day {
+  @apply dark:text-gray-300;
+}
+.react-datepicker__day:hover {
+  @apply dark:text-gray-900;
+}
+.react-datepicker__day--keyboard-selected {
+  @apply dark:text-gray-900;
+}
+.react-datepicker__day-names {
+  @apply dark:bg-darkMode;
+}
+.react-datepicker__day-name {
+  @apply dark:text-gray-300;
+}
+.react-datepicker__header {
+  @apply dark:bg-darkMode;
+}
+.react-datepicker__header h2 {
+  @apply dark:text-gray-300;
+}
+.react-datepicker__month-select {
+  @apply dark:bg-darkMode;
+}
+.react-datepicker__year-select {
+  @apply dark:bg-darkMode;
+}
+
+.darkText {
+  @apply dark:text-gray-400;
+}
+.lightDark {
+  @apply dark:text-gray-300;
+}
+[role="tabpanel"] {
+  @apply dark:bg-darkMode;
+}
+
+input[type="checkbox"] + span {
+  @apply dark:bg-gray-50;
+  @apply dark:text-black p-1 rounded-full;
+}
+
+input[type="radio"].peer {
+  @apply dark:bg-gray-50;
+  @apply dark:text-black p-1 rounded-full;
+}
+
+.optionContainer {
+  @apply dark:bg-darkMode;
+}
+
+input[type="tel"] {
+  @apply dark:text-gray-400;
+}
+
+input[type="tel"]::placeholder {
+  @apply dark:text-gray-600;
+}
+
+#search_input::placeholder {
+  @apply dark:text-gray-400 text-xs;
+}
+
+/* Dark mode styles */
+.dark .icon_down_dir {
+  filter: invert(1) brightness(0.5);
+}
+
+/* 
+div[role="menu"][aria-labelledby=":rj:"] {
+  @apply dark:bg-dark-light;
+
+} */
+
+/* Dark mode styles */
+.dark div[role="menu"][aria-labelledby=":rj:"] {
+  background-color: darkblue;
+  /* Dark mode background color */
+  color: black;
+  /* Dark mode text color */
+}
+
+.phone-input-max {
+  @apply dark:bg-darkMode;
+}
+
+label[for=":r2a:"] {
+  @apply dark:text-gray-50;
+}
+
+label[for=":r4k:"] {
+  @apply dark:text-gray-50;
+}
+
+label[for=":r4l:"] {
+  @apply dark:text-gray-50;
+}
+
+label[for=":r4o:"] {
+  @apply dark:text-gray-50;
+}
+
+label[for=":r4n:"] {
+  @apply dark:text-gray-50;
+}
+
+/* Style all labels within the .checkbox class */
+.checkbox label {
+  @apply dark:text-gray-300 p-0 m-0;
+  border-radius: 0px !important;
+}
+.checkbox {
+  margin: 0 !important;
+  @apply rounded-none;
+}
+.checkbox label {
+  @apply dark:text-gray-300 mx-1;
+}
+
+.CardNumberField input {
+  color: white !important;
+}
+/* Target the specific input elements by their class names */
+.InputElement::placeholder {
+  color: #ff0000; /* Change placeholder color to red, or any color you prefer */
+  opacity: 1; /* Ensure the placeholder is fully opaque */
+}
+input[placeholder="Card number"]::placeholder {
+  color: #ff0000; /* Red color for placeholder text */
+  opacity: 1; /* Make sure placeholder text is fully opaque */
+}
+
+input::placeholder {
+  @apply dark:text-gray-600;
+}
+.dark input:-webkit-autofill {
+  -webkit-text-fill-color: rgb(189 189 189 / var(--tw-text-opacity));
+}
+
+.dark select:-webkit-autofill {
+  -webkit-text-fill-color: rgb(189 189 189 / var(--tw-text-opacity));
+}
+
+.optionListContainer ul li {
+  @apply flex gap-2;
+}
+
+.multiselectPlaceholder .search-wrapper input::placeholder {
+  @apply !text-gray-700 font-medium;
+}
+
+.react-datepicker__day--disabled,
+.react-datepicker__month-text--disabled,
+.react-datepicker__quarter-text--disabled,
+.react-datepicker__year-text--disabled {
+  @apply dark:text-gray-700;
+}
+.react-datepicker__day--disabled,
+.react-datepicker__month-text--disabled,
+.react-datepicker__quarter-text--disabled,
+.react-datepicker__year-text--disabled:hover {
+  @apply dark:!text-gray-700;
+}
+
+.react-datepicker__day--today {
+  @apply bg-blue-600 text-white rounded;
+}
+.react-datepicker__day--today:hover {
+  @apply bg-blue-600 text-white rounded;
+}
+
+textarea::placeholder {
+  @apply dark:text-gray-600;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-gray-200;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-gray-200;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.swal2-popup {
+  @apply bg-dark-light;
+}
+.swal2-title {
+  @apply text-gray-400;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Edge */
+}
+.scrollbar-hide {
+  scrollbar-width: none; /* For Firefox */
+}

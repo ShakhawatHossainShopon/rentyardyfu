@@ -1,0 +1,1 @@
+export { ChipComponent } from "./ChipComponent";

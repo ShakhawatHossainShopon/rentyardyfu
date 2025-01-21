@@ -1,0 +1,46 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - dev
+      - pro
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Build frontend
+        run: npm run build
+
+      - name: Deploy to VPS
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H 3.129.128.239 >> ~/.ssh/known_hosts
+          
+          if [ "${{ github.ref }}" = "refs/heads/dev" ]; then
+            ssh ubuntu@3.129.128.239 'sudo rm -rf /var/www/dev_frontend/*'
+            ssh ubuntu@3.129.128.239 'mkdir -p /tmp/dev_frontend_build/'
+            scp -r dist/* ubuntu@3.129.128.239:/tmp/dev_frontend_build
+            ssh ubuntu@3.129.128.239 'sudo mv /tmp/dev_frontend_build/* /var/www/dev_frontend/ && sudo chown -R www-data:www-data /var/www/dev_frontend'
+          elif [ "${{ github.ref }}" = "refs/heads/pro" ]; then
+            ssh ubuntu@3.129.128.239 'sudo rm -rf /var/www/prod_frontend/*'
+            ssh ubuntu@3.129.128.239 'mkdir -p /tmp/prod_frontend_build/'
+            scp -r dist/* ubuntu@3.129.128.239:/tmp/prod_frontend_build
+            ssh ubuntu@3.129.128.239 'sudo mv /tmp/prod_frontend_build/* /var/www/prod_frontend/ && sudo chown -R www-data:www-data /var/www/prod_frontend'
+          fi
